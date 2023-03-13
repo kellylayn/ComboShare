@@ -20,9 +20,10 @@
 
 
 ## 設計書
-- ER図          :
-- テーブル定義書:
-- 詳細設計      :
+- ER図            : https://app.diagrams.net/?libs=general;er#G1OFq5nF_RUs8-65_X85NZJ8bObVRdJS0v
+- テーブル定義書  : https://docs.google.com/spreadsheets/d/1vb8U3GQZ0IV5npc0vjDl8vr-9Id1jhCJag62K8JEDJA/edit#gid=1944374824
+- 画面遷移図      : https://app.diagrams.net/#G112eaTjHTAjoX3nqI6ac8RPFZRuoGzeY7
+- ワイヤーフレーム: https://app.diagrams.net/?libs=general;mockups#G15tjs4m5dbQfgeAI617ed2mWu4wYY__WR
 
 ## 開発環境
 - OS：Linux(CentOS)
