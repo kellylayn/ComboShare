@@ -38,3 +38,5 @@
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+##ここから新規。git pushされないための記述
+/.env
