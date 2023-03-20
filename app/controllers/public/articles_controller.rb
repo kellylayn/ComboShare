@@ -10,6 +10,15 @@ class Public::ArticlesController < ApplicationController
     redirect_to articles_path
   end
 
+  def index
+  end
+
+  def show
+  end
+
+  def edit
+  end
+
 
   private
 
