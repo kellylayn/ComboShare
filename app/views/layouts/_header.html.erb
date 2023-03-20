@@ -1,0 +1,38 @@
+<header class="shadow-sm bg-darken-500 headercolor">
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <!--ロゴ-->
+      <div class="col-2">
+        <a class="navbar-brand" href="/"><i class="fas fa-birthday-cake"></i><span class= "header-text">ComboShare</span></a>
+      </div>
+      <!--メニューと検索窓-->
+      <div class="col-7">
+        <!--メニュー段-->
+        <div class="row">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <%= link_to 'About', about_path, class: 'nav-link text-right' %>
+              </li>
+              <% if end_user_signed_in? %>
+                <li>
+                  <%= link_to "ログアウト", destroy_end_user_session_path, method: :delete %>
+                </li>
+              <% else %>
+                <li>
+                  <%= link_to "新規登録", new_end_user_registration_path %>
+                </li>
+                <li>
+                  <%= link_to "ログイン", new_end_user_session_path %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
