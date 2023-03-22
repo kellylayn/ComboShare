@@ -1,0 +1,19 @@
+<div class="conteiner">
+  <div class="row">
+    <div><strong>投稿記事一覧</strong></div>
+    <table>
+      <th>タイトル</th>
+      <th>投稿者</th>
+      <th>記事内容</th>
+    </table>
+    <% @articles.each do |article| %>
+    <table>
+      <tr>
+        <%= link_to article.title, article_path(article.id) %>
+      </tr>
+      <tr><%= article.end_user.name %></tr>
+      <tr><%= article.body %></tr>
+    </table>
+    <% end %>
+  </div>
+</div>
