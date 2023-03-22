@@ -7,10 +7,10 @@ Rails.application.routes.draw do
     }
     root to: 'homes#top'
     get '/homes/about' => 'homes#about', as: 'about'
-    resources :articles, only: [:new, :index, :show, :edit]
+    resources :articles, only: [:new, :create, :index, :show, :edit, :update, :destroy]
   end
-  
-  
+
+
   namespace :admin do
     devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"

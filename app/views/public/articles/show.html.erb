@@ -1,2 +1,13 @@
-<h1>Article#show</h1>
-<p>Find me in app/views/article/show.html.erb</p>
+<div class="conteiner">
+  <div class="row">
+    <div><strong>投稿記事詳細</strong></div>
+    <table>
+      <th>タイトル：<%= @article.title %></th>
+      <th>投稿者：<%= @article.end_user.name %></th>
+    </table>
+    <div><%= @article.body %></div>
+    <% if @article.end_user == current_end_user %>
+      <%= link_to "削除", article_path(@article), method: :delete %>
+    <% end %>
+  </div>
+</div>
