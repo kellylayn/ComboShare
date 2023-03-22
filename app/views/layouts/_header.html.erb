@@ -19,6 +19,9 @@
               </li>
               <% if end_user_signed_in? %>
                 <li>
+                  <%= link_to 'マイページ', end_user_path(current_end_user.id), class: 'nav-link text-right' %>
+                </li>
+                <li>
                   <%= link_to '記事一覧', articles_path, class: 'nav-link text-right' %>
                 </li>
                 <li>

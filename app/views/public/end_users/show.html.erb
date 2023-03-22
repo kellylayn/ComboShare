@@ -1,0 +1,31 @@
+<div class="conteiner">
+  <div class="row mt-5 mb-3">
+    <h3 class="m-3"><%= @end_user.name %>のページ</h3>
+  </div>
+  <div class="row justify-content-center">
+    <!-- ユーザーの詳細 -->
+    <div class="col-8">
+      <h3><%= @end_user.name %></h3>
+    </div>
+  </div>
+
+  <!-- ユーザーの投稿一覧 -->
+  <div class="row justify-content-center">
+    <div class="col-8">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>タイトル</th>
+            <th>記事内容</th>
+          </tr>
+        </thead>
+        <% @articles.each do |article| %>
+        <tbody>
+          <td><%= link_to article.title, article_path(article.id) %></td>
+          <td><%= article.body %></td>
+        </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

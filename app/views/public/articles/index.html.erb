@@ -7,17 +7,17 @@
     <table class="table table-bordered">
       <thead>
         <tr>
-        <th>タイトル</th>
-        <th>投稿者</th>
-        <th>記事内容</th>
+          <th>タイトル</th>
+          <th>投稿者</th>
+          <th>記事内容</th>
         </tr>
       </thead>
       <% @articles.each do |article| %>
         <tbody>
           <tr>
-          <td><%= link_to article.title, article_path(article.id) %></td>
-          <td><%= article.end_user.name %></td>
-          <td><%= article.body %></td>
+            <td><%= link_to article.title, article_path(article.id) %></td>
+            <td><%= article.end_user.name %></td>
+            <td><%= article.body %></td>
           </tr>
         </tbody>
       <% end %>

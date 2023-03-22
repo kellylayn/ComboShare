@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'end_users/show'
+    get 'end_users/edit'
+    get 'end_users/index'
+  end
   scope module: :public do
     devise_for :end_users, skip: [:passwords], controllers: {
     registrations: "public/registrations",
@@ -8,6 +13,7 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get '/homes/about' => 'homes#about', as: 'about'
     resources :articles, only: [:new, :create, :index, :show, :edit, :update, :destroy]
+    resources :end_users, only: [:show, :edit, :index]
   end
 
 
