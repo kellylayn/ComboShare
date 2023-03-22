@@ -1,19 +1,27 @@
 <div class="conteiner">
-  <div class="row">
-    <div><strong>投稿記事一覧</strong></div>
-    <table>
-      <th>タイトル</th>
-      <th>投稿者</th>
-      <th>記事内容</th>
+  <div class="row mt-5 mb-3">
+    <h3 class="m-3">投稿記事一覧</h3>
+  </div>
+  <div class="row mb-5 pb-5 justify-content-center">
+    <div class="col-md-8">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>タイトル</th>
+          <th>投稿者</th>
+          <th>記事内容</th>
+        </tr>
+      </thead>
+      <% @articles.each do |article| %>
+        <tbody>
+          <tr>
+            <td><%= link_to article.title, article_path(article.id) %></td>
+            <td><%= article.end_user.name %></td>
+            <td><%= article.body %></td>
+          </tr>
+        </tbody>
+      <% end %>
     </table>
-    <% @articles.each do |article| %>
-    <table>
-      <tr>
-        <%= link_to article.title, article_path(article.id) %>
-      </tr>
-      <tr><%= article.end_user.name %></tr>
-      <tr><%= article.body %></tr>
-    </table>
-    <% end %>
+    </div>
   </div>
 </div>
