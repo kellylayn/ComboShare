@@ -13,6 +13,7 @@ import "jquery";
 import "popper.js";
 import "bootstrap";
 import "../stylesheets/application"
+import '@fortawesome/fontawesome-free/js/all'
 
 // app/javascript/stylesheets/にmystyle.cssを作成した場合、以下のように追記
 // import '../stylesheets/mystyle.css'
