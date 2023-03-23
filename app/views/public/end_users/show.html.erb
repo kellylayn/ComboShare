@@ -6,6 +6,9 @@
     <!-- ユーザーの詳細 -->
     <div class="col-8">
       <h3><%= @end_user.name %></h3>
+      <% if @end_user == current_end_user %>
+        <p><%= link_to "プロフィール編集", edit_end_user_path %></p>
+      <% end %>
     </div>
   </div>
 
