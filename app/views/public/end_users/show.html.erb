@@ -20,12 +20,16 @@
           <tr>
             <th>タイトル</th>
             <th>記事内容</th>
+            <th></th>
           </tr>
         </thead>
         <% @articles.each do |article| %>
         <tbody>
-          <td><%= link_to article.title, article_path(article.id) %></td>
-          <td><%= article.body %></td>
+          <tr>
+            <td><%= link_to article.title, article_path(article.id) %></td>
+            <td><%= article.body %></td>
+            <td><%= link_to "#{article.article_comments.count} コメント", article_path(article.id) %></td>
+          </tr>
         </tbody>
         <% end %>
       </table>

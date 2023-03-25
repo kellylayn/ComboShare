@@ -1,16 +1,41 @@
 <div class="conteiner">
-  <div class="row mt-5 mb-3">
-    <h3 class="m-3">投稿記事詳細</h3>
+  <div class="row justify-content-center mt-3">
+    <h3 class="col-10">投稿記事詳細</h3>
   </div>
   <div class="row justify-content-center">
     <div class="col-8">
       <div>タイトル：<%= @article.title %></div>
       <div>投稿者：<%= link_to @article.end_user.name %></div>
-      <div class="border rounded border-dark"><%= @article.body %></div>
+      <div class="border rounded border-dark"><%= simple_format(@article.body) %></div>
       <div class="text-right">
         <% if @article.end_user == current_end_user %>
         <%= link_to "編集", edit_article_path(@article)%>
         <%= link_to "削除", article_path(@article), method: :delete %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-8">
+      <p>コメント件数：<%= @article.article_comments.count %></p>
+      <% @article.article_comments.each do |article_comment| %>
+      <table class="col border-bottom border-right">
+        <td class="col-2"><%= article_comment.end_user.name %><br><%= article_comment.created_at.strftime('%Y/%m/%d') %></td>
+        <td class="col-1"></td>
+        <td><%= simple_format(article_comment.comment) %></td>
+        <td class="col-2 justify-content-right">
+          <% if article_comment.end_user == current_end_user %>
+            <%= link_to "削除", article_article_comment_path(article_comment.article, article_comment), method: :delete %>
+          <% end %>
+        </td>
+      </table>
+      <% end %>
+      <div class="col-10 mt-2">
+        <%= form_with model: [@article, @article_comment] do |f| %>
+        <table>
+          <tr><%= f.text_area :comment, class:"form-control", style: "width90%", rows: '5', placeholder: "コメントをここに" %></tr>
+          <tr><%= f.submit "送信する" %></tr>
+        </table>
         <% end %>
       </div>
     </div>
