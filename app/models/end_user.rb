@@ -5,6 +5,7 @@ class EndUser < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :articles, dependent: :destroy
+  has_many :article_comments,dependent: :destroy
 
   def self.looks(search, word)
     if search == "perfect_match"
