@@ -18,6 +18,13 @@ import '@fortawesome/fontawesome-free/js/all'
 // app/javascript/stylesheets/にmystyle.cssを作成した場合、以下のように追記
 // import '../stylesheets/mystyle.css'
 
-Rails.start()
-Turbolinks.start()
-ActiveStorage.start()
+// Rails.start()
+// Turbolinks.start()
+// ActiveStorage.start()
+
+require("@rails/ujs").start()
+require("turbolinks").start()
+require("@rails/activestorage").start()
+require("channels")
+
+require('jquery')
