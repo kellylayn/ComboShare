@@ -1,6 +1,7 @@
 class Public::ArticlesController < ApplicationController
   def new
     @article = Article.new
+    @end_user = current_end_user
   end
 
   def create
@@ -12,15 +13,18 @@ class Public::ArticlesController < ApplicationController
 
   def index
     @articles = Article.all
+    @end_user = current_end_user
   end
 
   def show
     @article = Article.find(params[:id])
     @article_comment = ArticleComment.new
+    @end_user = current_end_user
   end
 
   def edit
     @article = Article.find(params[:id])
+    @end_user = current_end_user
   end
 
   def update

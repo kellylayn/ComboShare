@@ -21,9 +21,11 @@
                 <li>
                   <%= link_to '記事一覧', articles_path, class: 'nav-link text-right' %>
                 </li>
-                <li>
-                  <%= link_to '記事投稿フォーム', new_article_path, class: 'nav-link text-right' %>
-                </li>
+                <% if @end_user.name != "guestuser" %>
+                  <li>
+                    <%= link_to '記事投稿フォーム', new_article_path, class: 'nav-link text-right' %>
+                  </li>
+                <% end %>
                 <li>
                   <%= link_to "ログアウト", destroy_end_user_session_path, method: :delete, class: 'nav-link text-right' %>
                 </li>
