@@ -6,7 +6,8 @@
     <!-- ユーザーの詳細 -->
     <div class="col-8">
       <h3><%= @end_user.name %></h3>
-      <% if @end_user == current_end_user %>
+      <% if @end_user.name == "guestuser" %>
+      <% elsif @end_user == current_end_user %>
         <%= link_to 'いいね一覧', favorites_index_path %>
         <p><%= link_to "プロフィール編集", edit_end_user_path %></p>
       <% end %>
@@ -30,9 +31,11 @@
             <td><%= link_to article.title, article_path(article.id) %></td>
             <td><%= article.body %></td>
             <td>
+              <% if @end_user.name != "guestuser" %>
               <div id = "like_<%= article.id %>">
                 <%= render partial: "public/favorites/favorite", locals: { article: article } %>
               </div>
+              <% end %>
               <%= link_to "#{article.article_comments.count} コメント", article_path(article.id) %>
             </td>
           </tr>
