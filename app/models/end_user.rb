@@ -6,6 +6,8 @@ class EndUser < ApplicationRecord
 
   has_many :articles, dependent: :destroy
   has_many :article_comments,dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :favorites_articles, through: :favorite, source: :article
 
   def self.looks(search, word)
     if search == "perfect_match"
@@ -19,5 +21,9 @@ class EndUser < ApplicationRecord
     else
       @end_user = EndUser.all
     end
+  end
+
+  def favorited_by?(article_id)
+    favorites.where(article_id: article_id).exists?
   end
 end

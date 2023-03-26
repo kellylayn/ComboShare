@@ -19,7 +19,12 @@
             <td><%= link_to article.title, article_path(article.id) %></td>
             <td><%= link_to article.end_user.name, end_user_path(article.end_user.id) %></td>
             <td><%= article.body %></td>
-            <td><%= link_to "#{article.article_comments.count} コメント", article_path(article.id) %></td>
+            <td>
+              <div id = "like_<%= article.id %>">
+                <%= render partial: "public/favorites/favorite", locals: { article: article } %>
+              </div>
+              <%= link_to "#{article.article_comments.count} コメント", article_path(article.id) %>
+            </td>
           </tr>
         </tbody>
       <% end %>
