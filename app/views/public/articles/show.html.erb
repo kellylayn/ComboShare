@@ -33,14 +33,16 @@
         </td>
       </table>
       <% end %>
-      <div class="col-10 mt-2">
-        <%= form_with model: [@article, @article_comment] do |f| %>
-        <table>
-          <tr><%= f.text_area :comment, class:"form-control", style: "width90%", rows: '5', placeholder: "コメントをここに" %></tr>
-          <tr><%= f.submit "送信する" %></tr>
-        </table>
-        <% end %>
-      </div>
+        <div class="col-10 mt-2">
+          <% if @end_user.name != "guestuser" %>
+            <%= form_with model: [@article, @article_comment] do |f| %>
+            <table>
+              <tr><%= f.text_area :comment, class:"form-control", style: "width90%", rows: '5', placeholder: "コメントをここに" %></tr>
+              <tr><%= f.submit "送信する" %></tr>
+            </table>
+          <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

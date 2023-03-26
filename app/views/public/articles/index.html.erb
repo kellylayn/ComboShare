@@ -20,9 +20,11 @@
             <td><%= link_to article.end_user.name, end_user_path(article.end_user.id) %></td>
             <td><%= article.body %></td>
             <td>
+              <% if @end_user.name != "guestuser" %>
               <div id = "like_<%= article.id %>">
                 <%= render partial: "public/favorites/favorite", locals: { article: article } %>
               </div>
+              <% end %>
               <%= link_to "#{article.article_comments.count} コメント", article_path(article.id) %>
             </td>
           </tr>
