@@ -2,6 +2,7 @@ class Public::SearchesController < ApplicationController
   # before_action :authenticate_end_user!, except: [:show, :index]
 
   def search
+    @end_user = current_end_user
     @range = params[:range]
 
     if @range == "ユーザー"

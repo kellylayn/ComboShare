@@ -1,4 +1,5 @@
 class Public::EndUsersController < ApplicationController
+  before_action :is_matching_login_end_user, only: [:edit, :update]
   before_action :ensure_guest_user, only: [:edit]
 
   def show
@@ -11,9 +12,12 @@ class Public::EndUsersController < ApplicationController
   end
 
   def update
-    end_user = EndUser.find(params[:id])
-    end_user.update(end_user_params)
-    redirect_to end_user_path(end_user.id)
+    @end_user = EndUser.find(params[:id])
+    if @end_user.update(end_user_params)
+      redirect_to end_user_path(end_user.id)
+    else
+      render :edit
+    end
   end
 
 
@@ -21,6 +25,13 @@ class Public::EndUsersController < ApplicationController
 
   def end_user_params
     params.require(:end_user).permit(:name)
+  end
+
+  def is_matching_login_end_user
+    end_user = EndUser.find(params[:id])
+    unless end_user.id == current_end_user.id
+      redirect_to articles_path, notice: '自分以外のプロフィール編集画面へは遷移できません'
+    end
   end
 
   def ensure_guest_user

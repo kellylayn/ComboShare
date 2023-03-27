@@ -4,6 +4,9 @@ class Article < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorites_end_users, through: :favorite, source: :end_user
 
+  validates :title, presence: true
+  validates :body, presence: true
+
 
   def self.looks(search, word)
     if search == "perfect_match"
