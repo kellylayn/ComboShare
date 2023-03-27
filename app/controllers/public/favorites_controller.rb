@@ -3,6 +3,7 @@ class Public::FavoritesController < ApplicationController
   before_action :article_params, only: [:create, :destroy]
 
   def index
+    @end_user = current_end_user
     @favorites = current_end_user.favorites
   end
 
