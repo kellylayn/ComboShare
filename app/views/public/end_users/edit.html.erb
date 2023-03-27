@@ -1,3 +1,12 @@
+<% if @end_user.errors.any? %>
+  <%= @end_user.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @end_user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <div class="conteiner">
   <div class="row mt-5 mb-3">
     <h3 class="m-3"><%= @end_user.name %>のページ</h3>

@@ -9,6 +9,8 @@ class EndUser < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorites_articles, through: :favorite, source: :article
 
+  validates :name, presence: true
+
   def self.looks(search, word)
     if search == "perfect_match"
       @end_user = EndUser.where("name LIKE?", "#{word}")
