@@ -5,3 +5,25 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+EndUser.create!(
+  name: "パなし昇竜はアド",
+  email: "panasi@syouryuu",
+  password: "mimimi",
+  introduction: "外せば擦り、当てれば読み。"
+  )
+
+15.times do |n|
+  EndUser.create!(
+    email: "test#{n + 1}@test.com",
+    name: "テス太郎#{n + 1}",
+    password: "testpass#{n + 1}",
+    introduction: "testtexttesttext"
+  )
+end
+
+EndUser.all.each do |user|
+  user.articles.create!(
+    title: 'タイトル',
+    body: 'テキストテキストテキストテキスト'
+  )
+end

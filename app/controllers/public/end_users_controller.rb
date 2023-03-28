@@ -5,6 +5,7 @@ class Public::EndUsersController < ApplicationController
   def show
     @end_user = EndUser.find(params[:id])
     @articles = @end_user.articles
+    @articles = @end_user.articles.order(created_at: :desc)
   end
 
   def edit
@@ -14,7 +15,7 @@ class Public::EndUsersController < ApplicationController
   def update
     @end_user = EndUser.find(params[:id])
     if @end_user.update(end_user_params)
-      redirect_to end_user_path(end_user.id)
+      redirect_to end_user_path(@end_user.id)
     else
       render :edit
     end
@@ -24,7 +25,7 @@ class Public::EndUsersController < ApplicationController
   private
 
   def end_user_params
-    params.require(:end_user).permit(:name)
+    params.require(:end_user).permit(:name, :introduction)
   end
 
   def is_matching_login_end_user
