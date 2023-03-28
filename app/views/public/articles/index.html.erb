@@ -3,8 +3,8 @@
     <h3 class="col-10">投稿記事一覧</h3>
   </div>
   <div class="row mb-5 pb-5 justify-content-center">
-    <div class="col-md-8">
-    <table class="table table-bordered">
+    <div class="col-md-9">
+    <table class="table table-bordered text-white">
       <thead>
         <tr>
           <th>タイトル</th>
@@ -16,16 +16,18 @@
       <% @articles.each do |article| %>
         <tbody>
           <tr>
-            <td><%= link_to article.title, article_path(article.id) %></td>
-            <td><%= link_to article.end_user.name, end_user_path(article.end_user.id) %></td>
-            <td><%= article.body.truncate(70) %></td>
+            <td><%= link_to article.title, article_path(article.id), class: "text-white" %></td>
+            <td>
+              <%= link_to article.end_user.name, end_user_path(article.end_user.id), class: "text-white" %>
+            </td>
+            <td class="text-truncate"><%= article.body.truncate(70) %></td>
             <td>
               <% if @end_user.name != "guestuser" %>
                 <div id = "like_<%= article.id %>">
                   <%= render partial: "public/favorites/favorite", locals: { article: article } %>
                 </div>
               <% end %>
-              <%= link_to "#{article.article_comments.count} コメント", article_path(article.id) %>
+              <%= link_to "#{article.article_comments.count} コメント", article_path(article.id), class: "text-white" %>
             </td>
           </tr>
         </tbody>

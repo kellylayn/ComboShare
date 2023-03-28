@@ -4,20 +4,21 @@
   </div>
   <div class="row justify-content-center">
     <!-- ユーザーの詳細 -->
-    <div class="col-8">
+    <div class="col-9">
       <h3><%= @end_user.name %></h3>
       <% if @end_user.name == "guestuser" %>
       <% elsif @end_user == current_end_user %>
-        <%= link_to 'いいね一覧', favorites_index_path %>
-        <p><%= link_to "プロフィール編集", edit_end_user_path %></p>
+        <%= link_to 'いいね一覧', favorites_index_path, class: "text-white"%>
+        <%= link_to "プロフィール編集", edit_end_user_path, class: "text-white"%>
       <% end %>
+      <div><%= @end_user.introduction %></div>
     </div>
   </div>
 
   <!-- ユーザーの投稿一覧 -->
   <div class="row justify-content-center">
-    <div class="col-8">
-      <table class="table table-bordered">
+    <div class="col-9">
+      <table class="table table-bordered text-white">
         <thead>
           <tr>
             <th>タイトル</th>
@@ -28,15 +29,15 @@
         <% @articles.each do |article| %>
         <tbody>
           <tr>
-            <td><%= link_to article.title, article_path(article.id) %></td>
-            <td><%= article.body.truncate(100) %></td>
+            <td><%= link_to article.title, article_path(article.id), class: "text-white"%></td>
+            <td><%= article.body.truncate(70) %></td>
             <td>
-              <% if @end_user.name != "guestuser" %>
+              <% if current_end_user.name != "guestuser" %>
               <div id = "like_<%= article.id %>">
                 <%= render partial: "public/favorites/favorite", locals: { article: article } %>
               </div>
               <% end %>
-              <%= link_to "#{article.article_comments.count} コメント", article_path(article.id) %>
+              <%= link_to "#{article.article_comments.count} コメント", article_path(article.id), class: "text-white" %>
             </td>
           </tr>
         </tbody>
