@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     }
     root to: 'homes#top'
     get '/homes/about' => 'homes#about', as: 'about'
+    get '/homes/privacy_policy' => 'homes#privacy_policy', as: 'privacy_policy'
     get "/search" => "searches#search"
     get "/favorites/index" => "favorites#index"
     resources :articles, only: [:new, :create, :index, :show, :edit, :update, :destroy] do

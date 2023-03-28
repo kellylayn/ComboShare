@@ -1,9 +1,11 @@
 <div class="conteiner">
   <div class="row justify-content-center">
-    <div class="col-8">
+    <div class="col">
       <h2>検索結果</h2>
-
-      <table class="table table-hover table-inverse">
+      <% if @end_users.size < 1 && @articles.size < 1 %>
+        <p>検索に一致するものはありませんでした。</p>
+      <% else %>
+      <table class="table table-hover table-inverse text-white">
         <!--検索対象モデルがUserの時 -->
         <% if @range == "ユーザー" %>
           <thead>
@@ -14,7 +16,7 @@
           <tbody>
             <% @end_users.each do |end_user| %>
               <tr>
-                <td><%= link_to end_user.name, end_user_path(end_user.id) %></td>
+                <td><%= link_to end_user.name, end_user_path(end_user.id),class: 'text-white text-decoration-underline' %></td>
               </tr>
             <% end %>
           </tbody>
@@ -30,19 +32,20 @@
           <tbody>
             <% @articles.each do |article| %>
               <tr>
-                <td><%= link_to article.title, article_path(article.id) %></td>
-                <td><%= link_to article.end_user.name, end_user_path(article.end_user.id) %></td>
+                <td><%= link_to article.title, article_path(article.id),class: 'text-white text-decoration-underline' %></td>
+                <td><%= link_to article.end_user.name, end_user_path(article.end_user.id),class: 'text-white text-decoration-underline' %></td>
                 <td>
                   <div id = "like_<%= article.id %>">
                     <%= render partial: "public/favorites/favorite", locals: { article: article } %>
                   </div>
-                  <%= link_to "#{article.article_comments.count} コメント", article_path(article.id) %>
+                  <%= link_to "#{article.article_comments.count} コメント", article_path(article.id),class: 'text-white text-decoration-underline' %>
                 </td>
               </tr>
             <% end %>
           </tbody>
         <% end %>
       </table>
+      <% end %>
     </div>
   </div>
 </div>
