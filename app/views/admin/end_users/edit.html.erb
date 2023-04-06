@@ -17,7 +17,11 @@
       <%= form_with model: @end_user do |f| %>
       <div class="form_label">
         <label for="inputName">名前</label>
-        <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前"%>
+        <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前", class:"form-control",style:"width:100%" %>
+      </div>
+      <div class="form_label">
+        <label for="inputEmail">メールアドレス</label>
+        <%= f.text_field :email, id:"email", placeholder:"メールアドレス", class:"form-control",style:"width:100%" %>
       </div>
       <div class="form_label">
         <label for="inputIntroduction">プロフィール編集</label>

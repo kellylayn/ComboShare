@@ -1,10 +1,9 @@
-<div class="conteiner">
-  <div class="row mt-5 mb-3">
+<div class="row mb-3">
     <h3 class="m-3">いいね一覧</h3>
   </div>
   <div class="row mb-5 pb-5 justify-content-center">
-    <div class="col-md-8">
-    <table class="table table-bordered">
+    <div class="col-md-11">
+    <table class="table table-bordered text-white">
       <thead>
         <tr>
           <th>タイトル</th>
@@ -15,13 +14,13 @@
       <% @favorites.each do |favorite| %>
         <tbody>
           <tr>
-            <td><%= link_to favorite.article.title, article_path(favorite.article.id) %></td>
-            <td><%= link_to favorite.article.end_user.name, end_user_path(favorite.article.end_user.id) %></td>
+            <td><%= link_to favorite.article.title, article_path(favorite.article.id), class: "text-white text-decoration-underline" %></td>
+            <td><%= link_to favorite.article.end_user.name, end_user_path(favorite.article.end_user.id), class: "text-white text-decoration-underline" %></td>
             <td>
               <div id = "like_<%= favorite.article.id %>">
                 <%= render partial: "public/favorites/favorite", locals: { article: favorite.article } %>
               </div>
-              <%= link_to "#{favorite.article.article_comments.count} コメント", article_path(favorite.article.id) %>
+              <%= link_to "#{favorite.article.article_comments.count} コメント", article_path(favorite.article.id), class: "text-white text-decoration-underline" %>
             </td>
           </tr>
         </tbody>
@@ -29,4 +28,3 @@
     </table>
     </div>
   </div>
-</div>

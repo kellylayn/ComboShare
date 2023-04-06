@@ -9,10 +9,10 @@
 
 <div class="conteiner">
   <div class="row justify-content-center mt-5 mb-3">
-    <h3 class="col-10">新規投稿フォーム</h3>
+    <h3 class="col">新規投稿フォーム</h3>
   </div>
   <div class="row mb-1 pb-5 justify-content-center">
-    <div class="col-md-8">
+    <div class="col-md-11">
       <%= form_with model: @article, url:articles_path do |f| %>
         <h4>記事タイトル</h4>
           <%= f.text_field :title %>
