@@ -1,0 +1,37 @@
+<div class="row justify-content-center mb-3">
+  <div class="col">
+    <h3>ユーザー一覧</h3>
+  </div>
+</div>
+<div class="row justify-content-center">
+  <div class="col">
+    <table class="table table-bordered text-white">
+      <thead>
+        <tr>
+          <th>ユーザー名</th>
+          <th>自己紹介文</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+      <% @end_users.each do |user| %>
+        <tbody>
+          <tr>
+            <td><%= link_to user.name, edit_admin_end_user_path(user.id), class: "text-white text-decoration-underline" %></td>
+            <td>
+              <% unless user.introduction.nil? %>
+                <%= user.introduction.truncate(30) %>
+              <% end %>
+            </td>
+            <td>
+              <% if user.is_deleted == false %>
+                <span class="text-success">有効</span>
+              <% else %>
+                <span class="text-danger">退会</span>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      <% end %>
+    </table>
+  </div>
+</div>

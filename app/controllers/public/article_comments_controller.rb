@@ -3,20 +3,22 @@ class Public::ArticleCommentsController < ApplicationController
     @article = Article.find(params[:article_id])
     @article_comment = current_end_user.article_comments.new(article_comment_params)
     @article_comment.article_id = @article.id
+    @article_comment.score = Language.get_data(article_comment_params[:comment])
     if @article_comment.save
       redirect_to article_path(@article)
-    elsif
-      # @article = Article.find(params[:article_id])
+    else
       @end_user = current_end_user
-      # article = Article.find(params[:article_id])
       render 'public/articles/show'
     end
-    #↑エラーメッセージ出すためにrenderしたいけど上手くいかない
   end
 
   def destroy
     ArticleComment.find(params[:id]).destroy
-    redirect_to article_path(params[:article_id])
+    if current_end_user
+      redirect_to article_path(params[:article_id])
+    else
+      redirect_to admin_article_path(params[:article_id])
+    end
   end
 
 
