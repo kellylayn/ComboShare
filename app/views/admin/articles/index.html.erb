@@ -1,0 +1,31 @@
+<div class="row justify-content-center mb-3">
+  <h3 class="col">投稿記事一覧</h3>
+</div>
+<div class="row mb-5 pb-5 justify-content-center">
+  <div class="col-md-11">
+  <table class="table table-bordered text-white">
+    <thead>
+      <tr>
+        <th>タイトル</th>
+        <th>投稿者</th>
+        <th>記事内容</th>
+        <th></th>
+      </tr>
+    </thead>
+    <% @articles.each do |article| %>
+      <tbody>
+        <tr>
+          <td><%= link_to article.title, admin_article_path(article.id), class: "text-white text-decoration-underline" %></td>
+          <td>
+            <%= link_to article.end_user.name, admin_end_user_path(article.end_user.id), class: "text-white text-decoration-underline" %>
+          </td>
+          <td class="text-truncate"><%= article.body.truncate(70) %></td>
+          <td>
+            <%= link_to "#{article.article_comments.count} コメント", admin_article_path(article.id), class: "text-white text-decoration-underline" %>
+          </td>
+        </tr>
+      </tbody>
+    <% end %>
+  </table>
+  </div>
+</div>
